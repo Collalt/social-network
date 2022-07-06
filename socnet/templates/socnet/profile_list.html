@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<nav class="navbar navbar-expand-sm navbar-dark bg-custom">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav me-auto">
+                <li class="navbar-brand" href="{% url 'socnet:profile' user.profile.id %}">
+                    <img src="{{ user.profile.avatar.url }}" alt="avatar" style="width:32px;" class="rounded-pill">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'socnet:profile' user.profile.id %}">My profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'socnet:profile_list' %}">All profiles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'socnet:logout' %}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% for profile in profiles %}
+
+<div class="container pt-5 ">
+    <div class="card border border-3 rounded" style="92px">
+        <div class="row no-gutters">
+            <div class="col-md-2">
+                <a href="{% url 'socnet:profile' profile.id %}">
+                    <img src="{{ profile.avatar.url }}" class="card-img" alt="Profile pic"></a>
+                <div class="d-grid">
+                    <button type="button" class="btn btn-custom mt-2" value="Profile"
+                            onclick="location.href='{% url 'socnet:profile' profile.id %}'">Profile
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body me-8">
+                    <h1 class="me">{{ profile.user.username }}</h1>
+                    <p class="">{{ profile.bio }}</p>
+                    <p class=""> Number of friends: {{ profile.friends.all|length }} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock content %}

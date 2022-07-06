@@ -1,0 +1,20 @@
+.bg-custom {
+    background-color: #c89365 !important;
+}
+.btn-custom {
+    background-color: #A2763D !important;
+        color: white !important;
+}
+.btn-custom:hover {
+    background-color: #c59764 !important;
+    color: white !important;
+}
+.btn-custom:active {
+    background-color: #c59764 !important;
+    color: white !important;
+}
+
+.btn-custom:focus {
+    background-color: #c59764 !important;
+    color: white !important;
+}
